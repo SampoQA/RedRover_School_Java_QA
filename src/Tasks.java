@@ -1,0 +1,87 @@
+public class Tasks {
+    // Точка входа – запускает только ту задачу, которую ты раскомментируешь
+    public static void main(String[] arg) {
+        //task1();   // раскомментируй для первой задачи
+        //task2();   // раскомментируй для второй задачи
+        task3();      // сейчас запускается третья задача
+    }
+
+    // ------------------- Задача №1 -------------------
+    static void task1() {
+        System.out.println("=== Задача 1 ===");
+        int a = 25;
+        int b = 7;
+
+        System.out.println("a =" + a + ", b = " + b);
+        System.out.println("Сложение: a + b = " + (a + b));
+        System.out.println("Вычитание: a - b = " + (a - b));
+        System.out.println("Умножение: a * b = " + (a * b));
+        System.out.println("Целочисленное деление a : b = " + (a / b));
+        System.out.println("Остаток от деления a : b = " + (a % b));
+
+        // Проверка на чётность
+        // 1. Выводим на экран строку, которая начинается с "a ".
+        // 2. Затем добавляем результат тернарного оператора.
+        // Тернарный оператор проверяет: остаток от деления a на 2 равен нулю?
+        // Если да (true) — возвращает строку "чётное", если нет (false) — "нечётное".
+        // В итоге на экран будет выведено, например, "a чётное" или "a нечётное"
+
+        System.out.println("a" + (a % 2 == 0 ? " чётное" : " нечётное"));
+        System.out.println("b" + (b % 2 == 0 ? " чётное" : " нечётное"));
+        System.out.println();
+
+        //Условный оператор
+        if (a % 2 == 0) {
+            System.out.println(a + " - чётное");
+        } else {
+            System.out.println(a + " - нечётное");
+        }
+        if (b % 2 == 0) {
+            System.out.println(b + " - чётное");
+        } else {
+            System.out.println(b + " - нечётное");
+        }
+    }
+
+    // ------------------- Задача №2 -------------------
+    static void task2() {
+        System.out.println("=== Задача 2 ===");
+        int a = 10;
+        int b = 14;
+
+        System.out.println("До обмена a = " + a + ", b = " + b);
+
+        // Меняем местами через третью переменную
+        int temp = a;
+        a = b;
+        b = temp;
+        System.out.println("После обмена: a = " + a + ", b = " + b);
+        System.out.println();
+    }
+
+
+// ------------------- Задача №3 -------------------
+static void task3() {
+    System.out.println("=== Задача 3 (пиратский дележ) ===");
+    // Входные данные
+    int total = 1000;          // добыча в дублонах
+    int pirates = 5;           // всего пиратов (включая капитана)
+
+    // Расчёты (используем double для точности)
+    double ownerShare = total / 2.0;              // владелец корабля
+    double remainingAfterOwner = total - ownerShare;
+    double captainShare = remainingAfterOwner / 2.0;  // капитану как половина остатка
+    double remainingAfterCaptain = remainingAfterOwner - captainShare;
+    double eachPirateShare = remainingAfterCaptain / pirates; // доля каждого пирата (включая капитана)
+    // Итоговая доля капитана (он получает captainShare + ещё свою равную долю из remainingAfterCaptain)
+    double captainTotal = captainShare + eachPirateShare;
+
+    System.out.println("Владелец корабля получает: " + ownerShare + " дублонов");
+    System.out.println("Капитан (Джек Воробей) получает: " + captainTotal + " дублонов");
+    System.out.println("Каждый пират (включая капитана) дополнительно получает: " + eachPirateShare + " дублонов");
+    System.out.println("Проверка: общая сумма = " + (ownerShare + captainTotal + eachPirateShare * (pirates - 1)) + " дублонов");
+    // (pirates-1) потому что капитана мы уже учли в captainTotal, остальные пираты получают только eachPirateShare
+    System.out.println();
+}
+
+    }
